@@ -1,0 +1,3 @@
+[submodule "ext/ArduinoCore-primo"]
+	path = submodules/ArduinoCore-primo
+	url = https://github.com/jp-96/ArduinoCore-primo.git

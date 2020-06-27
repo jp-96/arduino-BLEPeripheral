@@ -1,3 +1,7 @@
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified by Arduino.org development team
+
 #include "BLEHIDPeripheral.h"
 
 static const PROGMEM unsigned char hidInformationCharacteriticValue[]   = { 0x11, 0x01, 0x00, 0x03 };
@@ -6,7 +10,6 @@ BLEHIDPeripheral* BLEHIDPeripheral::_instance = NULL;
 
 BLEHIDPeripheral::BLEHIDPeripheral(unsigned char req, unsigned char rdy, unsigned char rst) :
   BLEPeripheral(req, rdy, rst),
-  _bleBondStore(),
 
   _hidService("1812"),
   _hidReportMapCharacteristic(),
@@ -19,6 +22,9 @@ BLEHIDPeripheral::BLEHIDPeripheral(unsigned char req, unsigned char rdy, unsigne
   _numHids(0)
 {
   _instance = this;
+  
+  //initialize device manager
+  initDM();
 }
 
 BLEHIDPeripheral::~BLEHIDPeripheral() {
@@ -56,10 +62,6 @@ void BLEHIDPeripheral::begin() {
 
   // begin initialization
   BLEPeripheral::begin();
-}
-
-void BLEHIDPeripheral::clearBondStoreData() {
-  this->_bleBondStore.clearData();
 }
 
 void BLEHIDPeripheral::setReportIdOffset(unsigned char reportIdOffset) {

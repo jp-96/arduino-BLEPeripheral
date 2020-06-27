@@ -1,8 +1,13 @@
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified by Arduino.org development team
+
 #ifndef _BLE_REMOTE_CHARACTERISTIC_H_
 #define _BLE_REMOTE_CHARACTERISTIC_H_
 
 #include "BLERemoteAttribute.h"
 #include "BLEDeviceLimits.h"
+#include "BLENode.h"
 
 enum BLERemoteCharacteristicEvent {
   BLEValueUpdated = 0
@@ -27,10 +32,12 @@ class BLERemoteCharacteristicValueChangeListener
 };
 
 typedef void (*BLERemoteCharacteristicEventHandler)(BLECentral& central, BLERemoteCharacteristic& characteristic);
+typedef void (*BleRemoteCharacteristicEventHandler)(BLENode& node, BLERemoteCharacteristic& characteristic);
 
 class BLERemoteCharacteristic : public BLERemoteAttribute
 {
   friend class BLEPeripheral;
+  friend class BLECentralRole;
 
   public:
     BLERemoteCharacteristic(const char* uuid, unsigned char properties);
@@ -54,9 +61,11 @@ class BLERemoteCharacteristic : public BLERemoteAttribute
     bool valueUpdated();
 
     void setEventHandler(BLERemoteCharacteristicEvent event, BLERemoteCharacteristicEventHandler eventHandler);
+    void setEventHandler(BLERemoteCharacteristicEvent event, BleRemoteCharacteristicEventHandler eventHandler);
 
   protected:
     void setValue(BLECentral& central, const unsigned char value[], unsigned char length);
+    void setValue(BLENode& node, const unsigned char value[], unsigned char length);
 
     void setValueChangeListener(BLERemoteCharacteristicValueChangeListener& listener);
 
@@ -70,6 +79,7 @@ class BLERemoteCharacteristic : public BLERemoteAttribute
 
     BLERemoteCharacteristicValueChangeListener*       _listener;
     BLERemoteCharacteristicEventHandler               _eventHandlers[1];
+	BleRemoteCharacteristicEventHandler               _evtHandlers[1];
 };
 
 #endif

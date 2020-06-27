@@ -1,10 +1,14 @@
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified by Arduino.org development team
+
 #ifndef _BLE_BOND_STORE_H_
 #define _BLE_BOND_STORE_H_
 
 class BLEBondStore
 {
   public:
-    BLEBondStore(int offset = 0);
+    BLEBondStore(int offset = NRF_UICR->NRFFW[0]);
 
     bool hasData();
     void clearData();

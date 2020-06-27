@@ -1,3 +1,7 @@
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified by Arduino.org development team
+
 #ifndef _BLE_HID_PERIPHERAL_H_
 #define _BLE_HID_PERIPHERAL_H_
 
@@ -15,7 +19,6 @@ class BLEHIDPeripheral : public BLEPeripheral
 
     void begin();
 
-    void clearBondStoreData();
     void setReportIdOffset(unsigned char reportIdOffset);
 
     void poll();
@@ -27,8 +30,6 @@ class BLEHIDPeripheral : public BLEPeripheral
 
   private:
     static BLEHIDPeripheral*            _instance;
-
-    BLEBondStore                        _bleBondStore;
 
     BLEService                          _hidService;
     BLEHIDReportMapCharacteristic       _hidReportMapCharacteristic;

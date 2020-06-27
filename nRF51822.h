@@ -1,3 +1,7 @@
+// Copyright (c) Sandeep Mistry. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Modified by Arduino.org development team
+
 #ifndef _NRF_51822_H_
 #define _NRF_51822_H_
 
@@ -49,18 +53,16 @@ class nRF51822 : public BLEDevice
 
     virtual ~nRF51822();
 
-    virtual void begin(unsigned char advertisementDataType,
-                unsigned char advertisementDataLength,
-                const unsigned char* advertisementData,
-                unsigned char scanDataType,
-                unsigned char scanDataLength,
-                const unsigned char* scanData,
+    virtual void begin(unsigned char advertisementDataSize,
+                unsigned char *advertisementData,
+                unsigned char scanDataSize,
+                unsigned char *scanData,
                 BLELocalAttribute** localAttributes,
                 unsigned char numLocalAttributes,
                 BLERemoteAttribute** remoteAttributes,
                 unsigned char numRemoteAttributes);
 
-    virtual void poll();
+    virtual void poll(ble_evt_t *bleEvt = 0);
 
     virtual void end();
 
@@ -92,7 +94,6 @@ class nRF51822 : public BLEDevice
     unsigned char                     _advDataLen;
     BLECharacteristic*                _broadcastCharacteristic;
 
-    uint16_t                          _connectionHandle;
 #if defined(NRF5) || defined(NRF51_S130)
     uint8_t                           _bondData[((sizeof(ble_gap_enc_key_t) + 3) / 4) * 4]  __attribute__ ((__aligned__(4)));
     ble_gap_enc_key_t*                _encKey;
@@ -111,6 +112,7 @@ class nRF51822 : public BLEDevice
     unsigned char                     _numRemoteCharacteristics;
     struct remoteCharacteristicInfo*  _remoteCharacteristicInfo;
     bool                              _remoteRequestInProgress;
+	
 };
 
 #endif

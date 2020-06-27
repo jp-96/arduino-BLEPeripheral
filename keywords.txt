@@ -9,10 +9,15 @@
 BLEAttribute	KEYWORD1
 BLEBondStore	KEYWORD1
 BLECentral	KEYWORD1
+BLECentralPeer	KEYWORD1
+BLECentralRole	KEYWORD1
 BLECharacteristic	KEYWORD1
 BLEDescriptor	KEYWORD1
 BLELocalAttribute	KEYWORD1
+BLENode	KEYWORD1
 BLEPeripheral	KEYWORD1
+BLEPeripheralPeer	KEYWORD1
+BLEPeripheralRole	KEYWORD1
 BLERemoteAttribute	KEYWORD1
 BLERemoteCharacteristic	KEYWORD1
 BLERemoteService	KEYWORD1
@@ -36,6 +41,20 @@ BLELongCharacteristic	KEYWORD1
 BLEUnsignedLongCharacteristic	KEYWORD1
 BLEFloatCharacteristic	KEYWORD1
 BLEDoubleCharacteristic	KEYWORD1
+BLEBoolCharacteristic	KEYWORD1
+
+BLERemoteCharCharacteristic	KEYWORD1
+BLERemoteUnsignedCharCharacteristic	KEYWORD1
+BLERemoteShortCharacteristic	KEYWORD1
+BLERemoteUnsignedShortCharacteristic	KEYWORD1
+BLERemoteIntCharacteristic	KEYWORD1
+BLERemoteUnsignedIntCharacteristic	KEYWORD1
+BLERemoteLongCharacteristic	KEYWORD1
+BLERemoteUnsignedLongCharacteristic	KEYWORD1
+BLERemoteFloatCharacteristic	KEYWORD1
+BLERemoteDoubleCharacteristic	KEYWORD1
+BLERemoteBoolCharacteristic	KEYWORD1
+
 
 BLEHIDPeripheral	KEYWORD1
 BLEMouse	KEYWORD1
@@ -83,6 +102,12 @@ setAdvertisingInterval	KEYWORD2
 setConnectionInterval	KEYWORD2
 setConnectable	KEYWORD2
 setBondStore	KEYWORD2
+enableBond	KEYWORD2
+saveBondData	KEYWORD2
+getPasskey	KEYWORD2
+setPasskey	KEYWORD2
+confirmPasskey	KEYWORD2
+sendPasskey	KEYWORD2
 addAttribute	KEYWORD2
 addLocalAttribute	KEYWORD2
 addRemoteAttribute	KEYWORD2
@@ -91,6 +116,7 @@ hasData	KEYWORD2
 clearData	KEYWORD2
 storeData	KEYWORD2
 restoreData	KEYWORD2
+status	KEYWORD2
 
 setValueLE	KEYWORD2
 valueLE	KEYWORD2
@@ -119,6 +145,26 @@ isPressed	KEYWORD2
 write	KEYWORD2
 releaseAll	KEYWORD2
 
+setScanParameters	KEYWORD2
+setScanInterval	KEYWORD2
+setScanWindow	KEYWORD2
+setScanTimeout	KEYWORD2
+setActiveScan	KEYWORD2
+startScan	KEYWORD2
+stopScan	KEYWORD2
+allowMultilink	KEYWORD2
+getFieldInAdvPck	KEYWORD2
+connect	KEYWORD2
+
+setAdvPck	KEYWORD2
+rawAdvPck	KEYWORD2
+dataLen	KEYWORD2
+isScanRsp	KEYWORD2
+rssi	KEYWORD2
+printAdvertisement	KEYWORD2
+
+printBleMessage	KEYWORD2
+
 #######################################
 # Constants (LITERAL1)
 #######################################
@@ -141,6 +187,15 @@ BLEUnsubscribed	LITERAL1
 BLEConnected	LITERAL1
 BLEDisconnected	LITERAL1
 BLEBonded	LITERAL1
+BLEPasskeyReceived	LITERAL1
+BLEPasskeyRequested	LITERAL1
 BLERemoteServicesDiscovered	LITERAL1
+BLEScanReceived	LITERAL1
+BLEMessage	LITERAL1
 
 BLEValueUpdated	LITERAL1
+
+ADVERTISING	LITERAL1
+SCANNING	LITERAL1
+CONNECT	LITERAL1
+DISCONNECT	LITERAL1
